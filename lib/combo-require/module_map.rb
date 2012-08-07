@@ -46,5 +46,15 @@ module ComboRequire
       end
     end
     
+    def add_handlebars_files(directory)
+      Dir[ File.join(directory, "**/*.handlebars") ].each do |file|
+        without_ext = File.basename(file, File.extname(file)).sub(/^_/, '')
+        self[ "templates/#{without_ext}" ] = {
+          path: "#{without_ext}.handlebars",
+          requires: ["handlebars"]
+        }
+      end
+    end
+    
   end
 end

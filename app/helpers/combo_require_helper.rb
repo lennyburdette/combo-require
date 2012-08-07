@@ -8,6 +8,7 @@ module ComboRequireHelper
     
     map = ComboRequire::ModuleMap.new
     map.add_sprockets_assets(ignore: ignore)
+    map.add_handlebars_files(Rails.root.join("app", "templates"))
     map.modules.deep_merge(overrides).to_json.html_safe
   end
   
