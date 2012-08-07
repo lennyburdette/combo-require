@@ -8,7 +8,7 @@ module ComboRequire
     def render
       last_modified = nil
       body = @paths.map do |path|
-        file = Rails.application.assets[path]
+        file = ::Rails.application.assets[path]
         last_modified ||= file.mtime
         last_modified = [file.mtime, last_modified].max
         file.to_s

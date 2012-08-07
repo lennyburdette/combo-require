@@ -1,4 +1,4 @@
-//= require LAB
+//= require vendor/LAB
 //= require_self
 
 (function ($LAB) {

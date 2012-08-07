@@ -25,10 +25,9 @@ module ComboRequire
     end
     
     def add_from_bundled_asset(path)
-      content = Rails.application.assets[path].to_s
+      content = ::Rails.application.assets[path].to_s
       matches = /^\s*define\((?<name>[^,]+),(?<deps>[^\]]+)/.match(content)
       if matches
-        puts matches
         self[ matches["name"].strip.gsub('"', '') ] = {
           path: path,
           requires: matches["deps"].strip.gsub(/[\[\]"\s]+/, '').split(",")
@@ -37,7 +36,7 @@ module ComboRequire
     end
     
     def add_sprockets_assets
-      Rails.application.assets.each_logical_path do |path|
+      ::Rails.application.assets.each_logical_path do |path|
         add_from_bundled_asset(path) if /\.js/ =~ path && ! (/min/ =~ path)
       end
     end
