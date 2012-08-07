@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get "/combo(/:version)" => "combo_require_controller#combo"
+  get "/combo(/:version)" => "combo_require/combo#combo"
 end
