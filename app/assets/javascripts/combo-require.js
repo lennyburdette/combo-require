@@ -203,7 +203,11 @@
   
   // Recursively checks if module `a` requires module `b`
   function _requires (a, b) {
-    var aDeps = config.modules[a].requires, i, l;
+    var modA = config.modules[a];
+    var modB = config.modules[b];
+    if (! modA) throw new Error("Missing module defininition " + a);
+    if (! modB) throw new Error("Missing module defininition " + b);
+    var aDeps = modA.requires || [], i, l;
     
     if (aDeps && aDeps.length) {
       if (aDeps.indexOf(b) > -1) {
