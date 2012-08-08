@@ -4,7 +4,7 @@ module ComboRequireHelper
   
   def module_map(options={})
     overrides = options[:overrides] || {}
-    ignore = [/head\.js/, /^admin/, /min\.js/].concat(options[:ignore] || [])
+    ignore = [/min\.js/].concat(options[:ignore] || [])
     
     map = ComboRequire::ModuleMap.new
     map.add_sprockets_assets(ignore: ignore)
