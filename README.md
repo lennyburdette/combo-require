@@ -18,7 +18,7 @@ Usage
       });
     </script>
     <script type="text/javascript">
-      require(["my-module"], function ($, myModule) {
+      require(["my-module"], function (myModule) {
         myModule(); // writes Hello World! to the page.
       });
     </script>
